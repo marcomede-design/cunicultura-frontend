@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cunicultura</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>🐇 Sistema de Cunicultura</h1>
+
+  <section>
+    <h2>Cadastrar Animal</h2>
+    <input type="text" id="brinco" placeholder="Brinco">
+    <input type="text" id="sexo" placeholder="Sexo (M/F)">
+    <input type="text" id="raca" placeholder="Raça">
+    <input type="date" id="nascimento">
+    <button onclick="cadastrarAnimal()">Cadastrar</button>
+  </section>
+
+  <section>
+    <h2>Animais</h2>
+    <button onclick="listarAnimais()">Atualizar</button>
+    <ul id="listaAnimais"></ul>
+  </section>
+
+  <section>
+    <h2>Dashboard</h2>
+    <button onclick="carregarDashboard()">Atualizar</button>
+    <pre id="dashboard"></pre>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
