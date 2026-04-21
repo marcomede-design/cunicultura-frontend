@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
+import { cores, estilosBase } from "../styles/tema"
 
 export default function Animais() {
   const [animais, setAnimais] = useState([])
@@ -42,68 +43,59 @@ export default function Animais() {
     }
   }
 
+  const femeas = animais.filter(a => a.sexo === "F")
+  const machos = animais.filter(a => a.sexo === "M")
+
   return (
-    <div style={styles.container}>
-      <header style={styles.header}>
-        <button onClick={() => navigate("/dashboard")} style={styles.voltarBtn}>← Voltar</button>
-        <h1 style={styles.logo}>🐇 Animais</h1>
+    <div style={estilosBase.container}>
+      <header style={estilosBase.header}>
+        <button onClick={() => navigate("/dashboard")} style={estilosBase.voltarBtn}>← Voltar</button>
+        <h1 style={estilosBase.logo}>🐇 Animais</h1>
+        <div style={{ width: 80 }} />
       </header>
 
-      <main style={styles.main}>
-        <div style={styles.card}>
-          <h3 style={styles.cardTitle}>Cadastrar animal</h3>
-          <form onSubmit={cadastrar} style={styles.form}>
-            <input
-              style={styles.input}
-              placeholder="Nome (ex: F-01)"
-              value={nome}
-              onChange={e => setNome(e.target.value)}
-              required
-            />
-            <select style={styles.input} value={sexo} onChange={e => setSexo(e.target.value)}>
+      <main style={{ ...estilosBase.main, maxWidth: 600 }}>
+        <div style={estilosBase.card}>
+          <p style={estilosBase.cardTitle}>Cadastrar animal</p>
+          <form onSubmit={cadastrar} style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <input style={estilosBase.input} placeholder="Nome (ex: F-01)" value={nome} onChange={e => setNome(e.target.value)} required />
+            <select style={estilosBase.input} value={sexo} onChange={e => setSexo(e.target.value)}>
               <option value="F">Fêmea</option>
               <option value="M">Macho</option>
             </select>
-            <button style={styles.btn} type="submit">Cadastrar</button>
+            <button style={estilosBase.btn} type="submit">Cadastrar</button>
           </form>
-          {erro && <p style={styles.erro}>{erro}</p>}
+          {erro && <p style={estilosBase.erro}>{erro}</p>}
         </div>
 
-        <div style={styles.card}>
-          <h3 style={styles.cardTitle}>Animais cadastrados ({animais.length})</h3>
-          {animais.length === 0 && <p style={styles.vazio}>Nenhum animal cadastrado</p>}
-          {animais.map(a => (
-            <div key={a.id} style={styles.animalItem}>
-              <div>
-                <span style={styles.animalNome}>{a.nome}</span>
-                <span style={{ ...styles.badge, background: a.sexo === "F" ? "#FBEAF0" : "#E6F1FB", color: a.sexo === "F" ? "#72243E" : "#0C447C" }}>
-                  {a.sexo === "F" ? "Fêmea" : "Macho"}
-                </span>
+        <div style={estilosBase.card}>
+          <p style={estilosBase.cardTitle}>Fêmeas ({femeas.length})</p>
+          {femeas.length === 0 && <p style={estilosBase.vazio}>Nenhuma fêmea cadastrada</p>}
+          {femeas.map(a => (
+            <div key={a.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: `0.5px solid ${cores.borda}` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ ...estilosBase.badge, background: "#fbeaf0", color: "#72243e" }}>F</span>
+                <span style={{ fontSize: 14, fontWeight: 500, color: cores.texto }}>{a.nome}</span>
               </div>
-              <button onClick={() => excluir(a.id)} style={styles.excluirBtn}>Excluir</button>
+              <button onClick={() => excluir(a.id)} style={estilosBase.btnVermelho}>Excluir</button>
+            </div>
+          ))}
+        </div>
+
+        <div style={estilosBase.card}>
+          <p style={estilosBase.cardTitle}>Machos ({machos.length})</p>
+          {machos.length === 0 && <p style={estilosBase.vazio}>Nenhum macho cadastrado</p>}
+          {machos.map(a => (
+            <div key={a.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: `0.5px solid ${cores.borda}` }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ ...estilosBase.badge, background: "#e6f1fb", color: "#0c447c" }}>M</span>
+                <span style={{ fontSize: 14, fontWeight: 500, color: cores.texto }}>{a.nome}</span>
+              </div>
+              <button onClick={() => excluir(a.id)} style={estilosBase.btnVermelho}>Excluir</button>
             </div>
           ))}
         </div>
       </main>
     </div>
   )
-}
-
-const styles = {
-  container: { minHeight: "100vh", background: "#f5f5f0" },
-  header: { background: "#fff", borderBottom: "0.5px solid #e0e0d8", padding: "14px 24px", display: "flex", alignItems: "center", gap: 16 },
-  voltarBtn: { background: "none", border: "0.5px solid #ccc", borderRadius: 8, padding: "6px 14px", fontSize: 13, cursor: "pointer", color: "#666" },
-  logo: { fontSize: 20, fontWeight: 500, margin: 0 },
-  main: { padding: 24, maxWidth: 600, margin: "0 auto", display: "flex", flexDirection: "column", gap: 16 },
-  card: { background: "#fff", border: "0.5px solid #e0e0d8", borderRadius: 12, padding: "1rem 1.25rem" },
-  cardTitle: { fontSize: 13, fontWeight: 500, color: "#888", margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "0.05em" },
-  form: { display: "flex", flexDirection: "column", gap: 10 },
-  input: { padding: "10px 14px", borderRadius: 8, border: "0.5px solid #ccc", fontSize: 14, outline: "none" },
-  btn: { padding: 11, borderRadius: 8, background: "#1D9E75", color: "#fff", border: "none", fontSize: 15, fontWeight: 500, cursor: "pointer" },
-  erro: { color: "#E24B4A", fontSize: 13, margin: "8px 0 0" },
-  vazio: { fontSize: 14, color: "#aaa", textAlign: "center", padding: "1rem 0" },
-  animalItem: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "10px 0", borderBottom: "0.5px solid #f0f0e8" },
-  animalNome: { fontSize: 14, fontWeight: 500, marginRight: 8 },
-  badge: { fontSize: 11, fontWeight: 500, padding: "2px 8px", borderRadius: 6 },
-  excluirBtn: { background: "none", border: "0.5px solid #E24B4A", borderRadius: 8, padding: "4px 10px", fontSize: 12, cursor: "pointer", color: "#E24B4A" }
 }

@@ -1,0 +1,41 @@
+export const cores = {
+  primaria: "#2d6a4f",
+  primariaClara: "#40916c",
+  primariaEscura: "#1b4332",
+  acento: "#74c69d",
+  fundo: "#f0f4f0",
+  fundoCard: "#ffffff",
+  fundoSecundario: "#e8f0e8",
+  borda: "#c8d8c8",
+  texto: "#1b3a2d",
+  textoSecundario: "#4a7a5a",
+  textoTerciario: "#7a9e7e",
+  perigo: "#c0392b",
+  alerta: "#8b6914",
+  info: "#1a6b8a"
+}
+
+export const estilosBase = {
+  container: { minHeight: "100vh", background: cores.fundo, fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" },
+  header: { background: cores.primariaEscura, padding: "14px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" },
+  logo: { fontSize: 20, fontWeight: 500, margin: 0, color: "#fff", display: "flex", alignItems: "center", gap: 8 },
+  sairBtn: { background: "rgba(255,255,255,0.15)", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: 13, cursor: "pointer", color: "#fff" },
+  voltarBtn: { background: "rgba(255,255,255,0.15)", border: "none", borderRadius: 8, padding: "6px 14px", fontSize: 13, cursor: "pointer", color: "#fff" },
+  main: { padding: 24, maxWidth: 900, margin: "0 auto" },
+  sectionTitle: { fontSize: 13, fontWeight: 500, color: cores.textoSecundario, margin: "0 0 16px", textTransform: "uppercase", letterSpacing: "0.08em" },
+  card: { background: cores.fundoCard, border: `0.5px solid ${cores.borda}`, borderRadius: 14, padding: "1rem 1.25rem", marginBottom: 16 },
+  cardTitle: { fontSize: 11, fontWeight: 500, color: cores.textoTerciario, margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "0.08em" },
+  metric: { background: cores.fundoSecundario, border: `0.5px solid ${cores.borda}`, borderRadius: 10, padding: "1rem" },
+  metricLabel: { fontSize: 12, color: cores.textoSecundario, margin: "0 0 4px" },
+  metricValue: { fontSize: 26, fontWeight: 500, color: cores.texto, margin: "0 0 2px" },
+  metricSub: { fontSize: 11, color: cores.textoTerciario, margin: 0 },
+  input: { padding: "10px 14px", borderRadius: 8, border: `1px solid ${cores.borda}`, fontSize: 14, outline: "none", background: "#fff", color: cores.texto, width: "100%" },
+  btn: { padding: 11, borderRadius: 8, background: cores.primaria, color: "#fff", border: "none", fontSize: 15, fontWeight: 500, cursor: "pointer", width: "100%" },
+  btnVerde: { background: cores.primaria, color: "#fff", border: "none", borderRadius: 8, padding: "6px 12px", fontSize: 12, cursor: "pointer" },
+  btnCinza: { background: "none", border: `0.5px solid ${cores.borda}`, borderRadius: 8, padding: "6px 12px", fontSize: 12, cursor: "pointer", color: cores.textoSecundario },
+  btnVermelho: { background: "none", border: "0.5px solid #c0392b", borderRadius: 8, padding: "6px 12px", fontSize: 12, cursor: "pointer", color: "#c0392b" },
+  erro: { color: cores.perigo, fontSize: 13, margin: "8px 0 0" },
+  vazio: { fontSize: 14, color: cores.textoTerciario, textAlign: "center", padding: "1.5rem 0" },
+  navBtn: { background: cores.fundoCard, border: `0.5px solid ${cores.borda}`, borderRadius: 12, padding: "1rem", fontSize: 14, cursor: "pointer", fontWeight: 500, color: cores.texto, textAlign: "center" },
+  badge: { fontSize: 11, fontWeight: 500, padding: "2px 8px", borderRadius: 6 }
+}
