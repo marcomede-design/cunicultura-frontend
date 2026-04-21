@@ -73,6 +73,8 @@ export default function Dashboard() {
           <button onClick={() => navigate("/animais")} style={styles.navBtn}>🐇 Animais</button>
           <button onClick={() => navigate("/reproducao")} style={styles.navBtn}>🔁 Reprodução</button>
           <button onClick={() => navigate("/ninhadas")} style={styles.navBtn}>🍼 Ninhadas</button>
+          <button onClick={() => navigate("/saude")} style={styles.navBtn}>🏥 Saúde</button>
+          <button onClick={() => navigate("/alimentacao")} style={styles.navBtn}>🥬 Alimentação</button>
         </div>
       </main>
     </div>

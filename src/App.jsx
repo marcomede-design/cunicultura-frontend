@@ -4,6 +4,8 @@ import Dashboard from "./pages/Dashboard"
 import Animais from "./pages/Animais"
 import Reproducao from "./pages/Reproducao"
 import Ninhadas from "./pages/Ninhadas"
+import Saude from "./pages/Saude"
+import Alimentacao from "./pages/Alimentacao"
 
 function RotaProtegida({ children }) {
   const token = localStorage.getItem("token")
@@ -15,26 +17,12 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={
-          <RotaProtegida>
-            <Dashboard />
-          </RotaProtegida>
-        } />
-        <Route path="/animais" element={
-          <RotaProtegida>
-            <Animais />
-          </RotaProtegida>
-        } />
-        <Route path="/reproducao" element={
-          <RotaProtegida>
-            <Reproducao />
-          </RotaProtegida>
-        } />
-        <Route path="/ninhadas" element={
-          <RotaProtegida>
-            <Ninhadas />
-          </RotaProtegida>
-        } />
+        <Route path="/dashboard" element={<RotaProtegida><Dashboard /></RotaProtegida>} />
+        <Route path="/animais" element={<RotaProtegida><Animais /></RotaProtegida>} />
+        <Route path="/reproducao" element={<RotaProtegida><Reproducao /></RotaProtegida>} />
+        <Route path="/ninhadas" element={<RotaProtegida><Ninhadas /></RotaProtegida>} />
+        <Route path="/saude" element={<RotaProtegida><Saude /></RotaProtegida>} />
+        <Route path="/alimentacao" element={<RotaProtegida><Alimentacao /></RotaProtegida>} />
       </Routes>
     </BrowserRouter>
   )
