@@ -1,4 +1,6 @@
-import { useEffect, useState } from "react"
+const fs = require('fs')
+
+const relatorios = `import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 import { cores, estilosBase } from "../styles/tema"
@@ -97,7 +99,7 @@ export default function Relatorios() {
       theme: "grid",
       headStyles: { fillColor: [45, 106, 79] }
     })
-    doc.save("relatorio-cunicultura-" + hoje.replace(/\//g, "-") + ".pdf")
+    doc.save("relatorio-cunicultura-" + hoje.replace(/\\//g, "-") + ".pdf")
   }
 
   function gerarExcel() {
@@ -112,7 +114,7 @@ export default function Relatorios() {
     XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(repData), "Reproducoes")
     const ninData = [["ID", "Matriz", "Nascidos", "Vivos", "Mortalidade"]].concat(ninhadas.map(n => [n.id, n.reproducao && n.reproducao.matriz ? n.reproducao.matriz.nome : "", n.totalNascidos, n.nascidosVivos, n.taxaMortalidade]))
     XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(ninData), "Ninhadas")
-    const hoje = new Date().toLocaleDateString("pt-BR").replace(/\//g, "-")
+    const hoje = new Date().toLocaleDateString("pt-BR").replace(/\\//g, "-")
     XLSX.writeFile(wb, "relatorio-cunicultura-" + hoje + ".xlsx")
   }
 
@@ -175,4 +177,7 @@ export default function Relatorios() {
       )
     )
   )
-}
+}`
+
+fs.writeFileSync('src/pages/Relatorios.jsx', relatorios, 'utf8')
+console.log('Relatorios.jsx reescrito com sucesso!')
