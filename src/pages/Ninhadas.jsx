@@ -56,7 +56,7 @@ export default function Ninhadas() {
   return (
     <div style={estilosBase.container}>
       <header style={estilosBase.header}>
-        <button onClick={() => navigate("/dashboard")} style={estilosBase.voltarBtn}>← Voltar</button>
-        <h1 style={estilosBase.logo}>🍼 Ninhadas</h1>
+        <button onClick={() => navigate("/dashboard")} style={estilosBase.voltarBtn}> Voltar</button>
+        <h1 style={estilosBase.logo}> Ninhadas</h1>
         <div style={{ width: 80 }} />
       </header>

@@ -74,8 +74,8 @@ export default function Reproducao() {
   return (
     <div style={estilosBase.container}>
       <header style={estilosBase.header}>
-        <button onClick={() => navigate("/dashboard")} style={estilosBase.voltarBtn}>← Voltar</button>
-        <h1 style={estilosBase.logo}>🔁 Reprodução</h1>
+        <button onClick={() => navigate("/dashboard")} style={estilosBase.voltarBtn}> Voltar</button>
+        <h1 style={estilosBase.logo}> Reprodução</h1>
         <div style={{ width: 80 }} />
       </header>
 
