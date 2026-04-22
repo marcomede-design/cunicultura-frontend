@@ -6,6 +6,7 @@ import Reproducao from "./pages/Reproducao"
 import Ninhadas from "./pages/Ninhadas"
 import Saude from "./pages/Saude"
 import Alimentacao from "./pages/Alimentacao"
+import Relatorios from "./pages/Relatorios"
 
 function RotaProtegida({ children }) {
   const token = localStorage.getItem("token")
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/ninhadas" element={<RotaProtegida><Ninhadas /></RotaProtegida>} />
         <Route path="/saude" element={<RotaProtegida><Saude /></RotaProtegida>} />
         <Route path="/alimentacao" element={<RotaProtegida><Alimentacao /></RotaProtegida>} />
+        <Route path="/relatorios" element={<RotaProtegida><Relatorios /></RotaProtegida>} />
       </Routes>
     </BrowserRouter>
   )
