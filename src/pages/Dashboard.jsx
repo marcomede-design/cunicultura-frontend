@@ -6,12 +6,16 @@ import { cores, estilosBase } from "../styles/tema"
 export default function Dashboard() {
   const [dados, setDados] = useState(null)
   const [erro, setErro] = useState("")
+  const [usuario, setUsuario] = useState("")
   const navigate = useNavigate()
 
   useEffect(() => {
     api.get("/dashboard")
       .then(res => setDados(res.data))
       .catch(() => setErro("Erro ao carregar dados"))
+    api.get("/auth/me")
+      .then(res => setUsuario(res.data.nome))
+      .catch(() => {})
   }, [])
 
   function sair() {
@@ -23,10 +27,18 @@ export default function Dashboard() {
   if (!dados) return React.createElement("p", { style: { padding: 24, color: cores.textoSecundario } }, "Carregando...")
 
   return (
-    React.createElement("div", { style: estilosBase.container },
+    React.createElement("div", { style: { ...estilosBase.container, position: "relative" } },
+      usuario && React.createElement("div", { style: {
+        position: "fixed", bottom: 16, right: 16, fontSize: 11,
+        color: "rgba(45,106,79,0.3)", fontWeight: 500,
+        pointerEvents: "none", zIndex: 9999, userSelect: "none"
+      }}, "Licenciado para: " + usuario),
       React.createElement("header", { style: estilosBase.header },
         React.createElement("h1", { style: estilosBase.logo }, "Cunicultura"),
-        React.createElement("button", { onClick: sair, style: estilosBase.sairBtn }, "Sair")
+        React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12 } },
+          usuario && React.createElement("span", { style: { fontSize: 13, color: "rgba(255,255,255,0.7)" } }, usuario),
+          React.createElement("button", { onClick: sair, style: estilosBase.sairBtn }, "Sair")
+        )
       ),
       React.createElement("main", { style: estilosBase.main },
         React.createElement("p", { style: estilosBase.sectionTitle }, "Visao geral"),
