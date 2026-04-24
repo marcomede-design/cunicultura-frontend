@@ -35,7 +35,6 @@ export default function Dashboard() {
         color: "rgba(45,106,79,0.3)", fontWeight: 500,
         pointerEvents: "none", zIndex: 9999, userSelect: "none"
       }}, "Licenciado para: " + usuario),
-
       React.createElement("header", { style: estilosBase.header },
         React.createElement("h1", { style: estilosBase.logo }, "Cunicultura"),
         React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 12 } },
@@ -97,4 +96,4 @@ export default function Dashboard() {
 }`
 
 fs.writeFileSync('src/pages/Dashboard.jsx', dashboard, 'utf8')
-console.log('Dashboard.jsx atualizado com marca dagua!')
+console.log('Dashboard.jsx atualizado!')
