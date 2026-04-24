@@ -8,6 +8,7 @@ import Saude from "./pages/Saude"
 import Alimentacao from "./pages/Alimentacao"
 import Relatorios from "./pages/Relatorios"
 import ForcaSelecao from "./pages/ForcaSelecao"
+import Engorda from "./pages/Engorda"
 
 function RotaProtegida({ children }) {
   const token = localStorage.getItem("token")
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/alimentacao" element={<RotaProtegida><Alimentacao /></RotaProtegida>} />
         <Route path="/relatorios" element={<RotaProtegida><Relatorios /></RotaProtegida>} />
         <Route path="/forca-selecao" element={<RotaProtegida><ForcaSelecao /></RotaProtegida>} />
+        <Route path="/engorda" element={<RotaProtegida><Engorda /></RotaProtegida>} />
       </Routes>
     </BrowserRouter>
   )
