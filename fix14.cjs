@@ -1,16 +1,6 @@
-import axios from "axios"
+const fs = require('fs')
 
-const api = axios.create({
-  baseURL: "https://cunicultura-backend.onrender.com"
-})
-
-api.interceptors.request.use(config => {
-  const token = localStorage.getItem("token")
-  if (token) config.headers.Authorization = `Bearer ${token}`
-  return config
-})
-
-export default api
+const keepAlive = `
 // Keep alive - acorda o backend a cada 14 minutos
 const BACKEND_URL = "https://cunicultura-backend.onrender.com"
 
@@ -22,3 +12,13 @@ function pingBackend() {
 
 // Inicia o ping após 14 minutos e repete
 setInterval(pingBackend, 14 * 60 * 1000)
+`
+
+const api = fs.readFileSync('src/services/api.js', 'utf8')
+
+if (!api.includes('setInterval')) {
+  fs.writeFileSync('src/services/api.js', api + keepAlive, 'utf8')
+  console.log('Keep alive adicionado ao api.js!')
+} else {
+  console.log('Keep alive ja existe!')
+}
