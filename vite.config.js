@@ -11,7 +11,7 @@ export default defineConfig({
       manifest: {
         name: 'Cunicultura',
         short_name: 'Cunicultura',
-        description: 'Sistema de gestão de granja de coelhos',
+        description: 'Sistema de gestao de granja de coelhos',
         theme_color: '#1D9E75',
         background_color: '#f5f5f0',
         display: 'standalone',
@@ -27,4 +27,27 @@ export default defineConfig({
       }
     })
   ],
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
+      },
+      mangle: {
+        toplevel: true
+      },
+      format: {
+        comments: false
+      }
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+        entryFileNames: 'assets/[hash].js',
+        chunkFileNames: 'assets/[hash].js',
+        assetFileNames: 'assets/[hash].[ext]'
+      }
+    }
+  }
 })
