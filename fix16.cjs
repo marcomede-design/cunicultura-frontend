@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+const fs = require('fs')
+
+const animais = `import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 import { cores, estilosBase } from "../styles/tema"
@@ -163,4 +165,7 @@ export default function Animais() {
       )
     )
   )
-}
+}`
+
+fs.writeFileSync('src/pages/Animais.jsx', animais, 'utf8')
+console.log('Animais.jsx atualizado com campos pet!')
