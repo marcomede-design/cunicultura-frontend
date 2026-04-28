@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+const fs = require('fs')
+
+const dashboard = `import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import api from "../services/api"
 import { cores, estilosBase } from "../styles/tema"
@@ -95,4 +97,7 @@ export default function Dashboard() {
       )
     )
   )
-}
+}`
+
+fs.writeFileSync('src/pages/Dashboard.jsx', dashboard, 'utf8')
+console.log('Dashboard.jsx corrigido!')
