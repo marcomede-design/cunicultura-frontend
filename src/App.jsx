@@ -11,6 +11,7 @@ import ForcaSelecao from "./pages/ForcaSelecao"
 import Engorda from "./pages/Engorda"
 import Financeiro from "./pages/Financeiro"
 import Cadastro from "./pages/Cadastro"
+import Assinar from "./pages/Assinar"
 
 function RotaProtegida({ children }) {
   const token = localStorage.getItem("token")
@@ -23,6 +24,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/assinar" element={<RotaProtegida><Assinar /></RotaProtegida>} />
         <Route path="/dashboard" element={<RotaProtegida><Dashboard /></RotaProtegida>} />
         <Route path="/animais" element={<RotaProtegida><Animais /></RotaProtegida>} />
         <Route path="/reproducao" element={<RotaProtegida><Reproducao /></RotaProtegida>} />
